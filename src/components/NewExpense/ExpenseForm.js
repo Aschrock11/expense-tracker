@@ -1,15 +1,15 @@
 import react, { useState } from "react";
 import "./ExpenseForm.css"
-const ExpenseForm = function () {
+const ExpenseForm = function (props) {
     const [enteredTitle, setEnteredTitle] = useState('');
     const titleChangeHandler = (event) => {
         setEnteredTitle(event.target.value);
-        console.log(event.target.value);
+
     }
     const [enteredAmount, setEnteredAmount] = useState('');
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value);
-        console.log(event.target.value);
+
     }
     const [enteredDate, setEnteredDate] = useState('');
     const dateChangeHandler = (event) => {
@@ -22,7 +22,7 @@ const ExpenseForm = function () {
             amount: enteredAmount,
             date: new Date(enteredDate)
         }
-        console.log(expenseData)
+        props.onSaveExpenseData(expenseData);
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
